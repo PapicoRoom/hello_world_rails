@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy ]
+  before_action :set_user, only: [:show, :update, :destroy]
 
   def index
     @users = User.all
@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def create
     # インスタンスを model から作成する
     @user = User.new(user_params)
+
     # インスタンスを DB に保存する
     @user.save!
 
@@ -19,7 +20,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    # 対象のレコードを探す
     # 探してきたレコードに対して変更を行う
     @user.update!(user_params)
     # jsonとして値を返す
@@ -27,7 +27,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    # 対象のレコードを探す
     # 探してきたレコードを削除する
     @user.destroy!
     # json として値を返す
@@ -42,6 +41,5 @@ class UsersController < ApplicationController
 
     def set_user
       @user = User.find(params[:id])
-
     end
 end
